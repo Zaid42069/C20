@@ -7,6 +7,7 @@ var cashG,diamondsG,jwelleryG,swordGroup;
 var PLAY=1;
 var END=0;
 var gameState=1;
+var width=windowWidth, height=windowHeight;
 
 function preload(){
   pathImg = loadImage("Road.png");
