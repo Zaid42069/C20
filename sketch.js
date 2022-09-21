@@ -7,7 +7,7 @@ var cashG,diamondsG,jwelleryG,swordGroup;
 var PLAY=1;
 var END=0;
 var gameState=1;
-var width=windowWidth, height=windowHeight;
+
 
 function preload(){
   pathImg = loadImage("Road.png");
@@ -22,14 +22,14 @@ function preload(){
 function setup(){
   
 //create the canvas and adjust the window sizes to suit the device 
-createCanvas(width,height)
+createCanvas(windowWidth,windowHeight)
 path=createSprite(width/2,200);
 path.addImage(pathImg);
 path.velocityY = 4;
 
 
 //creating boy running
-boy = createSprite(width/2,height-20,20,20);
+boy = createSprite(windowWidth/2,windowHeight-20,20,20);
 boy.addAnimation("SahilRunning",boyImg);
 boy.scale=0.08;
   
@@ -52,8 +52,8 @@ function draw() {
   
   path.velocityY=5
   //code to reset the background
-if (path.y>width/2) {
-  path.y=height/2,200
+if (path.y>windowWidth/2) {
+  path.y=WindowHeight/2,200
 }
     createCash();
     createDiamonds();
@@ -77,8 +77,8 @@ if (path.y>width/2) {
         gameState=END;
         
         boy.addAnimation("SahilRunning",endImg);
-        boy.x=width/2;
-        boy.y=height/2;
+        boy.x=windowWidth/2;
+        boy.y=windowHeight/2;
         boy.scale=0.6;
         
         cashG.destroyEach();
@@ -102,15 +102,15 @@ if (path.y>width/2) {
   text("Treasure: "+ treasureCollection,width-150,30);
   
   if (treasureCollection>=1000) {
-    text("congrats on reaching here",width-400,height/2)
+    text("congrats on reaching here",windowWidth-400,windowHeight/2)
     }
 
     if (treasureCollection>=1500) {
-      text("there's nothing more .",width-400,height-170)
+      text("there's nothing more .",windowWidth-400,windowHeight-170)
     }
 
     if (treasureCollection>=2000) {
-      text("https://www.youtube.com/shorts/eNQDkeoCNxw",width-450,height-230)
+      text("https://www.youtube.com/shorts/eNQDkeoCNxw",windowWidth-450,windowHeight-230)
       }
   }
 
@@ -132,7 +132,7 @@ function createDiamonds() {
   if (World.frameCount % 320 == 0) {
        // Modify the positions of diamonds 
 
-    var diamonds = createSprite(Math.round(random(50,width),40, 10, 10));
+    var diamonds = createSprite(Math.round(random(50,windowWidth),40, 10, 10));
     diamonds.addImage(diamondsImg);
   diamonds.scale=0.03;
   diamonds.velocityY = 5;
@@ -158,7 +158,7 @@ function createSword(){
   if (World.frameCount % 530 == 0) {
     //   Modify the positions of sword to make them spawn throughout the available screen size.
 
-    var sword = createSprite(Math.round(random(50, width),40, 10, 10));
+    var sword = createSprite(Math.round(random(50, windowWidth),40, 10, 10));
     sword.addImage(swordImg);
   sword.scale=0.1;
   sword.velocityY = 4;
